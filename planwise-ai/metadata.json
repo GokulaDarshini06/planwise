@@ -1,0 +1,5 @@
+{
+  "name": "PlanWise AI",
+  "description": "An intelligent personal assistant that plans your daily schedule automatically based on your tasks and time constraints using the Gemini API.",
+  "requestFramePermissions": []
+}

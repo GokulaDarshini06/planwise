@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlanWise AI</title>
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+      .aurora-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -10;
+        pointer-events: none;
+      }
+      .aurora-shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        mix-blend-mode: screen;
+        opacity: 0.25;
+        will-change: transform, opacity;
+      }
+      .shape1 {
+        width: 60vmax;
+        height: 60vmax;
+        background-color: #1e40af; /* brand-primary */
+        top: -15vh;
+        left: -20vw;
+        animation: move-aurora-1 22s ease-in-out infinite alternate;
+      }
+      .shape2 {
+        width: 55vmax;
+        height: 55vmax;
+        background-color: #3b82f6; /* brand-secondary */
+        bottom: -20vh;
+        right: -25vw;
+        animation: move-aurora-2 25s ease-in-out infinite alternate;
+      }
+      .shape3 {
+        width: 45vmax;
+        height: 45vmax;
+        background-color: #3730a3; /* Indigo */
+        bottom: 25vh;
+        left: 10vw;
+        animation: move-aurora-3 18s ease-in-out infinite alternate;
+      }
+      .shape4 {
+        width: 40vmax;
+        height: 40vmax;
+        background-color: #0c4a6e; /* Sky */
+        top: 15vh;
+        right: 5vw;
+        animation: move-aurora-4 30s ease-in-out infinite alternate;
+      }
+      @keyframes move-aurora-1 {
+        from { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.2; }
+        to { transform: translate(15vw, 20vh) rotate(40deg) scale(1.1); opacity: 0.3; }
+      }
+      @keyframes move-aurora-2 {
+        from { transform: translate(0, 0) rotate(0deg) scale(1.1); opacity: 0.3; }
+        to { transform: translate(-20vw, -25vh) rotate(-50deg) scale(0.9); opacity: 0.2; }
+      }
+      @keyframes move-aurora-3 {
+        from { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.25; }
+        to { transform: translate(10vw, -15vh) rotate(60deg) scale(1.2); opacity: 0.2; }
+      }
+      @keyframes move-aurora-4 {
+        from { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.2; }
+        to { transform: translate(-15vw, 15vh) rotate(-30deg) scale(1.1); opacity: 0.25; }
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#1e40af',
+              'brand-secondary': '#3b82f6',
+            },
+            keyframes: {
+              'pulse-glow': {
+                '0%, 100%': { opacity: '0.8', transform: 'scale(1)' },
+                '50%': { opacity: '1', transform: 'scale(1.05)' },
+              },
+              'fade-in-down': {
+                '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              'fade-out-up': {
+                '0%': { opacity: '1', transform: 'translateY(0)' },
+                '100%': { opacity: '0', transform: 'translateY(-10px)' },
+              },
+              'pulse-highlight': {
+                '0%': { backgroundColor: 'rgba(59, 130, 246, 0.2)' },
+                '50%': { backgroundColor: 'rgba(59, 130, 246, 0.4)' },
+                '100%': { backgroundColor: 'rgba(59, 130, 246, 0.2)' },
+              }
+            },
+            animation: {
+              'pulse-glow': 'pulse-glow 3s infinite ease-in-out',
+              'fade-in-down': 'fade-in-down 0.3s ease-out forwards',
+              'fade-out-up': 'fade-out-up 0.3s ease-out forwards',
+              'pulse-highlight': 'pulse-highlight 2s ease-in-out 2',
+            }
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.24.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-slate-900 text-white">
+    <div class="aurora-container">
+        <div class="aurora-shape shape1"></div>
+        <div class="aurora-shape shape2"></div>
+        <div class="aurora-shape shape3"></div>
+        <div class="aurora-shape shape4"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
